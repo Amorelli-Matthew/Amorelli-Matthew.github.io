@@ -1,0 +1,190 @@
+/* Modern CSS Reset */
+body, nav, main, footer, img, ul, figure, figcaption, h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/* Base Layout */
+html {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    /* Use dvh for dynamic mobile height (handles URL bar resize) */
+    min-height: 100vh; 
+    min-height: 100dvh;
+    margin: 0;
+    overflow-x: hidden; /* Prevents layout shifting */
+    background: linear-gradient(rgba(184, 134, 11, 0.6), rgba(184, 134, 11, 0.7)), 
+                url('../images/lake-background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: 'Merriweather', serif;
+}
+
+main {
+    flex: 1; /* Pushes footer to bottom */
+    display: flex;
+    flex-direction: column;
+}
+
+img { max-width: 100%; display: block; }
+
+/* Header & Navigation */
+header {
+    display: flex;
+    justify-content: flex-end;
+    width: fit-content;
+    margin-left: auto;
+    padding: 15px 20px;
+    background-color: rgba(0, 0, 0, 0.85);
+    border-bottom-left-radius: 10px;
+    flex-shrink: 0;
+}
+
+nav { background-color: transparent; display: inline-block; padding: 0; }
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; 
+}
+
+nav li a {
+    font-size: 1.25em;
+    color: #fff;
+    text-decoration: none;
+    padding: 0.25em;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+nav li a:hover {
+    color: #000;
+    background-color: #fff;
+    transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+h1, h2, h3 { font-family: 'DM Sans', sans-serif; margin-bottom: 0.2em; }
+
+/* Main Content */
+.content-container {
+    background: rgba(255, 255, 255, 0.96);
+    width: 85%;
+    max-width: 950px;
+    margin: 40px auto;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.projects-title { text-align: center; margin-bottom: 40px; color: #b8860b; font-size: 2.5em; }
+
+/* About Me & Project Grid */
+.pic-of-me { width: 250px; float: right; margin: 0 0 20px 20px; text-align: center; }
+.pic-of-me img { border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.about-section::after { content: ""; display: table; clear: both; }
+
+.project-article {
+    display: grid;
+    grid-template-columns: 1fr 250px;
+    column-gap: 30px;
+    row-gap: 10px;
+    margin-bottom: 50px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Contact Styles */
+.contact-links { margin-top: 20px; color: #000000; }
+.contact-links p { display: flex; align-items: center; font-size: 1.6em; margin-bottom: 20px; }
+
+
+.contact-links a {
+    color: #000000;
+    padding-left: 5px;
+    text-decoration: none;
+}
+
+.contact-links a:hover {
+    text-decoration: underline;
+}
+
+
+.contact-button {
+    display: inline-block; margin-top: 25px; padding: 12px 22px; background-color: #000000;
+    color: #fff; font-family: 'DM Sans', sans-serif; font-size: 1.1em; text-decoration: none;
+    border-radius: 6px; transition: 0.25s;
+}
+.contact-button:hover { background-color: #000; color: #fff; }
+
+/* Footer */
+footer {
+    margin-top: auto;
+    text-align: center;
+    padding: 25px;
+    color: #fff;
+    background-color: rgba(0,0,0,0.8);
+    width: 100%;
+    flex-shrink: 0; 
+}
+
+.social-icons { display: flex; justify-content: center; margin-top: 10px; }
+.social-icons a { color: #fff; font-size: 1.6em; margin: 0 10px; transition: 0.3s; }
+
+.social-icons a:hover { color: #b8860b; }
+
+/* MEDIA QUERIES */
+/* Mobile (Under 768px) */
+@media screen and (max-width: 767px) {
+    body { 
+        font-size: 0.9em; 
+        background-attachment: scroll; 
+        min-height: 100dvh;            
+        overflow-x: auto;              
+    } 
+
+    header {
+        width: 100%;
+        padding: 15px;
+        justify-content: center;
+        border-bottom-left-radius: 0;
+    }
+
+    nav ul { flex-direction: row; justify-content: center; gap: 15px; }
+    
+    .content-container { width: 92%; padding: 20px; margin: 20px auto; }
+
+    /* Brings the picture back and centers it */
+    .pic-of-me { 
+        display: block;
+        float: none; 
+        width: 180px; 
+        margin: 0 auto 20px auto; 
+    }
+
+    .about-section { text-align: center; }
+    .project-article { grid-template-columns: 1fr; }
+}
+/* Tablet (768px+) */
+@media screen and (min-width: 768px) {
+    header { justify-content: flex-end; width: fit-content; margin-left: auto; }
+    nav ul { align-items: flex-end; }
+    .content-container { width: 90%; }
+    .pic-of-me { float: right; margin: 0 0 20px 20px; }
+    .project-article { grid-template-columns: 1fr 200px; }
+}
+
+/* Desktop (1024px+) */
+@media screen and (min-width: 1024px) {
+    .content-container { max-width: 950px; }
+    .project-article { grid-template-columns: 1fr 250px; }
+    nav li a { font-size: 1.3em; }
+    .social-icons a { font-size: 2em; }
+}

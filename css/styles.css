@@ -14,11 +14,10 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    /* Use dvh for dynamic mobile height (handles URL bar resize) */
     min-height: 100vh; 
-    min-height: 100dvh;
+    min-height: 100dvh; /* From Old: handles mobile URL bars */
     margin: 0;
-    overflow-x: hidden; /* Prevents layout shifting */
+    overflow-x: hidden;
     background: linear-gradient(rgba(184, 134, 11, 0.6), rgba(184, 134, 11, 0.7)), 
                 url('../images/lake-background.jpg');
     background-size: cover;
@@ -28,9 +27,7 @@ body {
 }
 
 main {
-    flex: 1; /* Pushes footer to bottom */
-    display: flex;
-    flex-direction: column;
+    flex: 1;
 }
 
 img { max-width: 100%; display: block; }
@@ -44,10 +41,7 @@ header {
     padding: 15px 20px;
     background-color: rgba(0, 0, 0, 0.85);
     border-bottom-left-radius: 10px;
-    flex-shrink: 0;
 }
-
-nav { background-color: transparent; display: inline-block; padding: 0; }
 
 nav ul {
     list-style-type: none;
@@ -68,123 +62,213 @@ nav li a {
 nav li a:hover {
     color: #000;
     background-color: #fff;
-    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
-h1, h2, h3 { font-family: 'DM Sans', sans-serif; margin-bottom: 0.2em; }
-
-/* Main Content */
+/* Main Content Container */
 .content-container {
     background: rgba(255, 255, 255, 0.96);
     width: 85%;
-    max-width: 950px;
+    max-width: 1000px;
     margin: 40px auto;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
-.projects-title { text-align: center; margin-bottom: 40px; color: #b8860b; font-size: 2.5em; }
+.projects-title { 
+    text-align: center; 
+    margin-bottom: 50px; 
+    color: #b8860b; 
+    font-size: 2.5em; 
+    font-family: 'DM Sans', sans-serif;
+}
 
-/* About Me & Project Grid */
+/* --- About Me Section (From Old Styles) --- */
 .pic-of-me { width: 250px; float: right; margin: 0 0 20px 20px; text-align: center; }
 .pic-of-me img { border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
 .about-section::after { content: ""; display: table; clear: both; }
 
+/* --- Project Article Grid (Preserved from New Styles) --- */
 .project-article {
     display: grid;
-    grid-template-columns: 1fr 250px;
-    column-gap: 30px;
-    row-gap: 10px;
-    margin-bottom: 50px;
-    padding-bottom: 30px;
+    grid-template-columns: 1fr 300px; 
+    column-gap: 40px;
+    align-items: start; 
+    margin-bottom: 60px;
+    padding-bottom: 40px;
     border-bottom: 1px solid #ddd;
 }
 
-/* Contact Styles */
+.project-article:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.project-header {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.project-header h3 { 
+    font-family: 'DM Sans', sans-serif; 
+    font-size: 1.6em;
+    color: #222;
+}
+
+.project-header a {
+    color: #000;
+    text-decoration: underline; 
+    font-weight: bold;
+    font-size: 0.95em;
+    transition: color 0.3s ease;
+}
+
+.project-header a:hover { color: #b8860b; }
+
+.project-description p { line-height: 1.6; margin-bottom: 12px; }
+.project-description p:last-child { margin-bottom: 0; }
+.project-description em {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+    font-weight: normal;
+}
+
+.project-image-placeholder { display: flex; justify-content: center; }
+.project-image-placeholder img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+/* --- Contact Styles (From Old Styles) --- */
 .contact-links { margin-top: 20px; color: #000000; }
 .contact-links p { display: flex; align-items: center; font-size: 1.6em; margin-bottom: 20px; }
-
-
-.contact-links a {
-    color: #000000;
-    padding-left: 5px;
-    text-decoration: none;
-}
-
-.contact-links a:hover {
-    text-decoration: underline;
-}
-
+.contact-links a { color: #000000; padding-left: 5px; text-decoration: none; }
+.contact-links a:hover { text-decoration: underline; }
 
 .contact-button {
     display: inline-block; margin-top: 25px; padding: 12px 22px; background-color: #000000;
     color: #fff; font-family: 'DM Sans', sans-serif; font-size: 1.1em; text-decoration: none;
     border-radius: 6px; transition: 0.25s;
 }
-.contact-button:hover { background-color: #000; color: #fff; }
+.contact-button:hover { background-color: #333; color: #fff; }
 
-/* Footer */
+/* Footer & Socials */
 footer {
-    margin-top: auto;
     text-align: center;
     padding: 25px;
     color: #fff;
     background-color: rgba(0,0,0,0.8);
     width: 100%;
-    flex-shrink: 0; 
+    margin-top: auto;
 }
 
-.social-icons { display: flex; justify-content: center; margin-top: 10px; }
-.social-icons a { color: #fff; font-size: 1.6em; margin: 0 10px; transition: 0.3s; }
-
+.social-icons { display: flex; justify-content: center; margin-top: 10px; gap: 20px; }
+.social-icons a { color: #fff; font-size: 1.6em; transition: 0.3s; }
 .social-icons a:hover { color: #b8860b; }
 
-/* MEDIA QUERIES */
-/* Mobile (Under 768px) */
-@media screen and (max-width: 767px) {
+/* Responsive Media Queries */
+
+/* Tablet & Mobile (Under 850px) */
+@media screen and (max-width: 850px) {
     body { 
-        font-size: 0.9em; 
-        background-attachment: scroll; 
-        min-height: 100dvh;            
-        overflow-x: auto;              
-    } 
+        background-attachment: scroll; /* Better performance on mobile browsers */
+    }
 
     header {
         width: 100%;
-        padding: 15px;
         justify-content: center;
         border-bottom-left-radius: 0;
     }
 
-    nav ul { flex-direction: row; justify-content: center; gap: 15px; }
-    
-    .content-container { width: 92%; padding: 20px; margin: 20px auto; }
+    nav ul { 
+        flex-direction: row; 
+        justify-content: center; 
+        gap: 15px; 
+        align-items: center;
+    }
 
-    /* Brings the picture back and centers it */
+    .content-container { 
+        width: 92%; 
+        padding: 25px; 
+        margin: 20px auto; /* Reduced margin for mobile spacing */
+    }
+    
+    /* About Me Centering (from Old Styles) */
+    .about-section {
+        text-align: center;
+    }
+
     .pic-of-me { 
         display: block;
         float: none; 
-        width: 180px; 
+        width: 200px; 
         margin: 0 auto 20px auto; 
     }
 
-    .about-section { text-align: center; }
-    .project-article { grid-template-columns: 1fr; }
-}
-/* Tablet (768px+) */
-@media screen and (min-width: 768px) {
-    header { justify-content: flex-end; width: fit-content; margin-left: auto; }
-    nav ul { align-items: flex-end; }
-    .content-container { width: 90%; }
-    .pic-of-me { float: right; margin: 0 0 20px 20px; }
-    .project-article { grid-template-columns: 1fr 200px; }
+    /* Contact Section Centering */
+    .contact-links p {
+        justify-content: center; /* Centers the icons and text */
+        font-size: 1.4em;
+    }
+
+    /* Project Grid Adjustment */
+    .project-article {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        padding-bottom: 30px;
+        margin-bottom: 40px;
+    }
+
+    .project-image-placeholder {
+        order: -1; /* Image above text on mobile */
+    }
+
+    .project-image-placeholder img {
+        max-width: 280px;
+        margin: 0 auto;
+    }
 }
 
-/* Desktop (1024px+) */
-@media screen and (min-width: 1024px) {
-    .content-container { max-width: 950px; }
-    .project-article { grid-template-columns: 1fr 250px; }
-    nav li a { font-size: 1.3em; }
-    .social-icons a { font-size: 2em; }
+/* Specific Small Mobile Fixes (Under 480px) */
+@media screen and (max-width: 480px) {
+    .projects-title {
+        font-size: 2em;
+    }
+    
+    .contact-links p {
+        font-size: 1.2em;
+    }
+}
+
+/* Mobile (Under 767px) */
+@media screen and (max-width: 767px) {
+
+    .content-container { 
+        width: 95%;        
+        padding: 20px 15px;
+        margin: 15px 0px;  
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    /* Prevents the header text from clipping */
+    h1 {
+        font-size: 1.8em; 
+        word-wrap: break-word;
+    }
+
+    /* Ensures the Welcome text stays inside the box */
+    .welcome-section p {
+        font-size: 1em;
+        line-height: 1.4;
+    }
 }
